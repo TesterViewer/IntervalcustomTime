@@ -14,9 +14,9 @@ while isRunning == True:
     isTimeUp = False
   elif isTimeUp == False:
     if ivalTime.minute - currTime.minute >= 5:
+      print ivalTime.minute
+      print currTime.minute
       isTimeUp = True
     else:
       ivalTime = datetime.datetime.now()
       isTimeUp = False
-
-  
