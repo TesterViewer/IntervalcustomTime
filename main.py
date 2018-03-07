@@ -4,19 +4,24 @@ import datetime
 toaster = ToastNotifier()
 isTimeUp = True
 isRunning = True
+timeUp = 5
 currTime = datetime.datetime.now()
 ivalTime = datetime.datetime.now()
 while isRunning == True:
-  if isTimeUp == True:
-    currTime = datetime.datetime.now()
-    ivalTime = datetime.datetime.now()
-    toaster.show_toast("Timer","Time Up!!!")
-    isTimeUp = False
-  elif isTimeUp == False:
-    if ivalTime.minute - currTime.minute >= 5:
-      isTimeUp = True
-    else:
-      ivalTime = datetime.datetime.now()
+    if isTimeUp == True:
+      if ivalTime.minute > currTime.minute:
+        currTime = datetime.datetime.now()
+        ivalTime = datetime.datetime.now()
+      else:
+        currTime = datetime.datetime.now()
+      toaster.show_toast("Timer","Time Up!!!")
       isTimeUp = False
+    elif isTimeUp == False:
+      if (((60 - currTime.minute) + ivalTime.minute) == timeUp) | (ivalTime.minute - currTime.minute >= timeUp):
+        isTimeUp = True
+      else:
+        if ivalTime.minute > 59:
+          ivalTime.minute = 0
+        ivalTime = datetime.datetime.now()
+        isTimeUp = False
 
-  
