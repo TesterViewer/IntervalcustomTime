@@ -14,7 +14,7 @@ while isRunning == True:
         ivalTime = datetime.datetime.now()
       else:
         currTime = datetime.datetime.now()
-      toaster.show_toast("Timer","Time Up!!!")
+      toaster.show_toast("TIMER OF LIFE","TAKING 5 MINUTES!!!")
       isTimeUp = False
     elif isTimeUp == False:
       if (((60 - currTime.minute) + ivalTime.minute) == timeUp) | (ivalTime.minute - currTime.minute >= timeUp):
